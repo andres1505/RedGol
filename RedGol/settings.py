@@ -26,9 +26,6 @@ SECRET_KEY = 'django-insecure-9x)3ib1w0i7q7_%zdm&fe7g(0v*7l9yhc6pp$jlwza@)u0@-9=
 DEBUG = True
 
 ALLOWED_HOSTS = [".railway.app", "localhost", "127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-c9a9c.up.railway.app/'
-]
 
 
 # Application definition
@@ -51,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'RedGol.urls'
@@ -118,11 +116,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# Configuración de archivos estáticos
+# Archivos estáticos (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+
+# Directorios donde Django buscará archivos estáticos adicionales
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Esto es solo para producción
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Configuración para WhiteNoise (recomendado para Railway)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

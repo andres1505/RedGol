@@ -1,8 +1,8 @@
 {% extends "layouts/base.html" %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="/static/css/partidos.css">
-{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/partidos.css' %}">
+
 
 {% block content %}
 <div class="container-fluid py-5">

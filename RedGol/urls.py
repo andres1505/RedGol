@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from fichajes.views import listar_fichajes, inicio_view
 from partidos.views import partidos_view, goleadores_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -27,3 +29,6 @@ urlpatterns = [
     path('partidos/', partidos_view, name='partidos'),
     path('goleadores/', goleadores_view, name='goleadores'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -2,9 +2,9 @@
 
 {% block title %}Inicio - RedGol{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="/static/css/inicio.css">
-{% endblock %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<script src="{% static 'js/inicio.js' %}"></script>
 
 {% block content %}
 <!-- Hero Section -->
@@ -117,8 +117,4 @@
         </div>
     </div>
 </section>
-{% endblock %}
-
-{% block extra_js %}
-<script src="/static/js/inicio.js"></script>
 {% endblock %}
